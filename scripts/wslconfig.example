@@ -3,7 +3,7 @@
 
 [wsl2]
 # Giới hạn RAM tối đa cho máy ảo WSL2 (khuyên dùng 8GB-10GB trên máy 16GB RAM, hoặc 12GB-16GB trên máy 32GB RAM)
-memory=256MB
+memory=8GB
 
 # Số luồng CPU cấp cho WSL2
 processors=6
