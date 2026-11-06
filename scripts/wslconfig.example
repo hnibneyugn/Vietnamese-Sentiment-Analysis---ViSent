@@ -1,0 +1,19 @@
+# Cấu hình mẫu cho WSL2 — Đặt file này tại: C:\Users\<Tên_User>\.wslconfig
+# Sau khi lưu, chạy lệnh: `wsl --shutdown` trên PowerShell rồi mở lại Ubuntu/Docker Desktop.
+
+[wsl2]
+# Giới hạn RAM tối đa cho máy ảo WSL2 (khuyên dùng 8GB-10GB trên máy 16GB RAM, hoặc 12GB-16GB trên máy 32GB RAM)
+memory=256MB
+
+# Số luồng CPU cấp cho WSL2
+processors=6
+
+# Dung lượng Swap dự phòng khi tràn RAM
+swap=4GB
+
+# Tự động thu hồi bộ nhớ cache không dùng trả về cho Windows
+pageReporting=true
+
+[experimental]
+autoMemoryReclaim=gradual
+sparseVhd=true
