@@ -44,7 +44,7 @@ Khi tất cả các mục báo `[OK]`, bạn đã đạt tiêu chí **"Xong khi.
 1. **Thử nghiệm 1:** Quit hẳn Docker Desktop ở khay hệ thống (System Tray), sau đó chạy lại `uv run python scripts/doctor.py` hoặc `docker ps`. Đọc kỹ thông báo lỗi pipe `//./pipe/dockerDesktopLinuxEngine` để nhớ dấu hiệu khi Daemon chết.
 2. **Thử nghiệm 2:** Sửa `$env:USERPROFILE\.wslconfig` thành `memory=256MB`, chạy `wsl --shutdown`, rồi bật lại Docker Desktop xem chuyện gì xảy ra (nhớ đổi lại `memory=8GB` sau khi thử xong!).
 3. Ghi lại kết quả vào [docs/journal.md](journal.md) và đánh tag:
-```powershell
+```powershell  
 git add .
 git commit -m "feat(m0): setup workspace, Makefile and environment doctor"
 git tag m0-done

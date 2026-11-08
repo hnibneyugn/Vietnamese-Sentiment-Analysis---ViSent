@@ -32,7 +32,7 @@ run-api:
 	uv run uvicorn app.api.main:app --reload --host 0.0.0.0 --port 8000
 
 test:
-	uv run pytest -v --cov=app --cov=ml --cov-report=term-missing
+	uv run pytest -p no:anyio -v --cov=app --cov=ml --cov=scripts --cov-branch --cov-report=term-missing
 
 lint:
 	uv run ruff check .

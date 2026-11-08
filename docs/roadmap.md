@@ -193,8 +193,8 @@ Bản này sắp xếp lại dự án trong `mlops-local-jenkins-spec.md` thành
 
 | Module | Học | Làm | Kiểm tra | Phá thử | Ghi chú | Tag git |
 |---|---|---|---|---|---|---|
-| 0 | [ ] | [ ] | [ ] | [ ] | [ ] | `m0-done` |
-| 1 | [ ] | [ ] | [ ] | [ ] | [ ] | `m1-done` |
+| 0 | [x] | [x] | [x] | [x] | [x] | `m0-done` |
+| 1 | [x] | [x] | [x] | [x] | [x] | `m1-done` |
 | 2 | [ ] | [ ] | [ ] | [ ] | [ ] | `m2-done` |
 | 3 | [ ] | [ ] | [ ] | [ ] | [ ] | `m3-done` |
 | 4 | [ ] | [ ] | [ ] | [ ] | [ ] | `m4-done` |
