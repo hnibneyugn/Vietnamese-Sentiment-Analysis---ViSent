@@ -1,0 +1,26 @@
+# Môi trường ảo và cache của máy host
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+
+# Git và tài liệu không cần trong image
+.git/
+docs/
+tests/
+scripts/
+
+# QUAN TRỌNG (Module 2): Không nhúng cứng model hay dữ liệu vào image!
+# Model sẽ được nạp từ Docker Volume hoặc MLflow Registry (Module 7)
+models/
+*.joblib
+*.onnx
+data/
+
+# Frontend node_modules
+app/web/node_modules/
+app/web/dist/

@@ -1,0 +1,14 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: visent-api:0.2.0
+    container_name: visent-api
+    environment:
+      - MODEL_PATH=/app/models/model.joblib
+    volumes:
+      - ./models:/app/models:ro
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
