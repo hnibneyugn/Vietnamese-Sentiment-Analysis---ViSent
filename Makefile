@@ -29,10 +29,10 @@ train:
 	uv run python ml/src/models/train.py
 
 run-api:
-	uv run uvicorn app.api.main:app --reload --host 0.0.0.0 --port 8000
+	uv run uvicorn backend.api.main:app --reload --host 0.0.0.0 --port 8000
 
 test:
-	uv run pytest -p no:anyio -v --cov=app --cov=ml --cov=scripts --cov-branch --cov-report=term-missing
+	uv run pytest -p no:anyio -v --cov=backend --cov=ml --cov=scripts --cov-branch --cov-report=term-missing
 
 lint:
 	uv run ruff check .

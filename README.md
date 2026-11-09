@@ -42,9 +42,9 @@ visent/
 ├── ml/
 │   └── src/
 │       └── models/             # Code huấn luyện (TF-IDF + LR ở M1, PhoBERT ở M8)
-├── app/
-│   ├── api/                    # FastAPI serving (`/predict`, `/health`, `/metrics`)
-│   └── web/                    # React frontend (từ Module 2)
+├── backend/
+│   └── api/                    # FastAPI serving (`/predict`, `/health`, `/metrics`)
+├── frontend/                   # React + TypeScript UI & Nginx Gateway (từ Module 2)
 ├── tests/                      # Unit tests & API integration tests (pytest)
 └── pipelines/                  # Jenkinsfile cho CI/CD, Training & Retraining
 ```

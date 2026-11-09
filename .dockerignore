@@ -22,5 +22,5 @@ models/
 data/
 
 # Frontend node_modules
-app/web/node_modules/
-app/web/dist/
+frontend/node_modules/
+frontend/dist/

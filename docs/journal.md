@@ -37,13 +37,23 @@
 
 ---
 
-## Module 2 – Container hoá – <ngày>
+## Module 2 – Container hoá – 2026-11-09
 - **Học được:**
+  - Tách dự án thành 2 thư mục rõ ràng `backend/` (FastAPI) và `frontend/` (React + TypeScript + Nginx Gateway).
+  - Viết `Dockerfile.api` và `Dockerfile.web` theo kiến trúc **Multi-stage build**, chạy bằng quyền **non-root** (`appuser` / `nginx-unprivileged`), có `HEALTHCHECK`, và nạp `model.joblib` qua Read-Only Volume (`./models:/app/models:ro`) thay vì nhúng cứng vào image.
+  - Qua 2 thử nghiệm Layer Cache: đặt `COPY package.json` + `RUN npm install` trước `COPY frontend/ ./` giúp tận dụng `CACHED` khi chỉ sửa code giao diện (`App.tsx`); ngược lại nếu đảo thứ tự `COPY` lên trước sẽ làm vỡ cache và bắt chạy lại `npm install` mỗi lần sửa code.
 - **Lỗi gặp phải & nguyên nhân:**
+  - Ở `Dockerfile.api`: gõ nhầm tên user `appsuer` thay vì `appuser` khiến `docker run` báo lỗi `unable to find user appsuer: no matching entries in passwd file`, và gõ nhầm `model.jiblib` / `./model`.
+  - Ở `Dockerfile.web`: truyền `--retries=3s` thay vì số nguyên `--retries=3` gây lỗi `strconv.ParseInt: parsing "3s": invalid syntax`, và thiếu một dấu `/` trong `http://127.0.0.1:8080/`.
 - **Trả lời câu hỏi Tự kiểm tra:**
-  - *Vì sao tag `latest` nguy hiểm? Multi-stage giúp gì cho kích thước image?* ->
+  - *Vì sao tag `latest` nguy hiểm?* -> Vì `:latest` là nhãn động (mutable) bị ghi đè liên tục: không thể biết chính xác container trên Production đang chạy commit nào để giám sát/debug, hai máy chủ kéo `:latest` ở hai thời điểm khác nhau có thể chạy hai bản code khác nhau, và không thể rollback nhanh về bản trước đó khi deploy lỗi.
+  - *Multi-stage giúp gì cho kích thước và bảo mật của image?* ->
+    1. **Giảm mạnh kích thước image:** Bỏ lại toàn bộ công cụ biên dịch nặng nề (`node_modules` ~200MB, trình biên dịch TypeScript, `pip` cache, `gcc`) ở stage `builder`, chỉ copy thành phẩm (`dist/` nặng vài trăm KB hoặc `/opt/venv`) sang stage `runtime`.
+    2. **Tăng cường bảo mật (Giảm bề mặt tấn công - Attack Surface):** Image `runtime` càng ít công cụ thừa (không có `npm`, `pip`, trình biên dịch) thì khi kẻ tấn công khai thác lỗ hổng sẽ càng có ít công cụ để tải mã độc hoặc leo thang đặc quyền, đồng thời giảm số lượng lỗ hổng CVE khi quét bằng Trivy (Module 11).
+    3. **Tách bạch các bước (Modular):** Giúp dễ dàng quan sát lỗi xảy ra ở bước cài thư viện/build hay ở bước cấu hình runtime.
 - **Điều còn chưa hiểu (hỏi lại sau):**
-- **Thời gian thực tế:**
+  - Cách tự động hoá việc chạy lint, pytest và `docker build` mỗi khi push code bằng Jenkins CI (sẽ học ở Module 3).
+- **Thời gian thực tế:** 2.0 giờ
 
 ---
 

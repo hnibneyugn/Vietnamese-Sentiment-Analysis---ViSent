@@ -1,4 +1,4 @@
-"""Ứng dụng FastAPI phục vụ dự đoán cảm xúc tiếng Việt (Module 1)."""
+"""Ứng dụng FastAPI phục vụ dự đoán cảm xúc tiếng Việt (Module 1 & 2)."""
 
 import os
 from collections.abc import AsyncIterator
@@ -9,7 +9,7 @@ from typing import Protocol, cast
 import joblib
 from fastapi import FastAPI, HTTPException, Request, status
 
-from app.api.schemas import (
+from backend.api.schemas import (
     HealthResponse,
     PredictRequest,
     PredictResponse,
@@ -63,8 +63,8 @@ async def lifespan(application: FastAPI) -> AsyncIterator[None]:
 
 app = FastAPI(
     title="ViSent MLOps API",
-    description="API phân tích cảm xúc bình luận tiếng Việt (Module 1: TF-IDF + Logistic Regression).",
-    version="0.1.0",
+    description="API phân tích cảm xúc bình luận tiếng Việt (TF-IDF + Logistic Regression).",
+    version="0.2.0",
     lifespan=lifespan,
 )
 

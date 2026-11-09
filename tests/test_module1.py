@@ -9,7 +9,7 @@ import pytest
 from fastapi import HTTPException
 from pydantic import ValidationError
 
-from app.api.main import (
+from backend.api.main import (
     app,
     get_model_path,
     health_check,
@@ -18,7 +18,7 @@ from app.api.main import (
     load_model_if_exists,
     predict_sentiment,
 )
-from app.api.schemas import PredictRequest
+from backend.api.schemas import PredictRequest
 from ml.src.models.train import load_dataset, train_and_save
 from ml.src.models.train import main as train_main
 from ml.src.preprocess import preprocess_text

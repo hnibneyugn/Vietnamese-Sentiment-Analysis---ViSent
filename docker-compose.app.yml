@@ -12,3 +12,16 @@ services:
     ports:
       - "8000:8000"
     restart: unless-stopped
+  
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    image: visent-web:0.2.0
+    container_name: vinsent-web
+    ports: 
+      - "8080:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
